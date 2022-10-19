@@ -1,0 +1,41 @@
+Source: thin
+Section: ruby
+Priority: optional
+Maintainer: Debian Ruby Team <pkg-ruby-extras-maintainers@lists.alioth.debian.org>
+Uploaders: Ryan Niebur <ryan@debian.org>,
+           Laurent Arnoud <laurent@spkdev.net>
+Build-Depends: debhelper-compat (= 13),
+               gem2deb (>= 1),
+               help2man,
+               ruby-daemons (>= 1.0),
+               ruby-daemons (>= 1.0.9),
+               ruby-eventmachine (>= 1.0),
+               ruby-eventmachine (>= 1.0.4),
+               ruby-rack (<< 3),
+               ruby-rack (>= 1),
+               ruby-rspec
+Standards-Version: 4.5.1
+Vcs-Git: https://salsa.debian.org/ruby-team/thin.git
+Vcs-Browser: https://salsa.debian.org/ruby-team/thin
+Homepage: https://github.com/macournoyer/thin
+Testsuite: autopkgtest-pkg-ruby
+XS-Ruby-Versions: all
+Rules-Requires-Root: no
+
+Package: thin
+Architecture: any
+XB-Ruby-Versions: ${ruby:Versions}
+Depends: ${misc:Depends},
+         ${ruby:Depends},
+         ${shlibs:Depends}
+Description: fast and very simple Ruby web server
+ Thin is a Ruby web server that glues together 3 of the best Ruby
+ libraries in web history:
+   * the Mongrel parser, the root of Mongrel's speed and security
+   * Event Machine, a network I/O library with extremely high
+     scalability, performance and stability
+   * Rack, a minimal interface between webservers and Ruby frameworks
+ .
+ Which makes it, with all humility, the most secure, stable, fast and
+ extensible Ruby web server bundled in an easy to use package for your own
+ pleasure.

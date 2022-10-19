@@ -1,0 +1,2 @@
+version=4
+https://github.com/macournoyer/thin/tags .*/v?(\d\S*)\.tar\.gz

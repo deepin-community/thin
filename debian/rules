@@ -1,0 +1,16 @@
+#!/usr/bin/make -f
+
+INSTALLED_GEM_PATH=$(shell ruby -e 'puts Gem.default_path.map { |x| ["debian/thin"+x, x] }.flatten.join(":")')
+export GEM2DEB_TEST_RUNNER = --check-dependencies
+export DH_RUBY = --gem-install
+
+%:
+	dh $@ --buildsystem=ruby --with ruby
+
+override_dh_install:
+	ruby ./debian/gen_init.rb
+	dh_install
+
+override_dh_installman:
+	GEM_PATH=$(INSTALLED_GEM_PATH) help2man -n "fast and very simple Ruby web server" ./bin/thin > debian/thin.manpage
+	dh_installman
